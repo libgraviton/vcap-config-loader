@@ -1,0 +1,21 @@
+{
+    "name": "graviton/vcap-config-loader",
+    "description": "Load services config from a VCAP_SERVICES json definition.",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Lucas Bickel",
+            "email": "lucas.bickel@swisscom.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Graviton\\Vcap\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Graviton\\Vcap\\": "test/" }
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
