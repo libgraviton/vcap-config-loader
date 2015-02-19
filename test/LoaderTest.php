@@ -9,7 +9,9 @@ use Graviton\Vcap\Loader;
 
 class LoaderTest extends \PHPUnit_Framework_TestCase
 {
+    // @codingStandardsIgnoreStart
     const JSON_STRING_MARIADB = '{"mariadb-": [ {"name": "example", "credentials": {"host": "127.0.0.1", "port": "3306", "username": "testuser", "password": "testpass", "database": "testbase"} } ]}';
+    // @codingStandardsIgnoreEmd
 
     /**
      * @dataProvider getProvider
@@ -66,9 +68,9 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
         $sut = new Loader;
         $sut->setInput(self::JSON_STRING_MARIADB);
         $this->assertEquals('127.0.0.1', $sut->getHost('mariadb-', 'example'));
-        $this->assertEquals('3306',      $sut->getPort('mariadb-', 'example'));
-        $this->assertEquals('testuser',  $sut->getUsername('mariadb-', 'example'));
-        $this->assertEquals('testpass',  $sut->getPassword('mariadb-', 'example'));
-        $this->assertEquals('testbase',  $sut->getDatabase('mariadb-', 'example'));
+        $this->assertEquals('3306', $sut->getPort('mariadb-', 'example'));
+        $this->assertEquals('testuser', $sut->getUsername('mariadb-', 'example'));
+        $this->assertEquals('testpass', $sut->getPassword('mariadb-', 'example'));
+        $this->assertEquals('testbase', $sut->getDatabase('mariadb-', 'example'));
     }
 }
