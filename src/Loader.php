@@ -10,6 +10,11 @@ use Peekmo\JsonPath\JsonStore;
 class Loader
 {
     /**
+     * @var JsonStore
+     */
+    private $input;
+
+    /**
      * @param string $input input string from VCAP_SERVICES env variable
      *
      * @return void
@@ -26,7 +31,8 @@ class Loader
      */
     public function get($path)
     {
-        return array_pop($this->input->get($path));
+        $data = $this->input->get($path);
+        return array_pop($data);
     }
 
     /**
@@ -38,7 +44,7 @@ class Loader
      */
     public function getByParam($type, $name, $path)
     {
-        $jsonPath = sprintf("\$['%s'][?(@.name=='%s')].%s", $type, $name, $path);
+        $jsonPath = sprintf("\$['%s'][?(@['name']=='%s')].%s", $type, $name, $path);
         return $this->get($jsonPath);
     }
 
