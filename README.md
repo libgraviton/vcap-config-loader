@@ -1,5 +1,7 @@
 # VCAP_SERVICES loader for php
 
+[![Build Status](https://travis-ci.org/libgraviton/vcap-config-loader.svg?branch=develop)](https://travis-ci.org/libgraviton/vcap-config-loader) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/libgraviton/vcap-config-loader/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/libgraviton/vcap-config-loader/?branch=develop) [![Code Coverage](https://scrutinizer-ci.com/g/libgraviton/vcap-config-loader/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/libgraviton/vcap-config-loader/?branch=develop) [![Latest Stable Version](https://poser.pugx.org/graviton/vcap-config-loader/v/stable.svg)](https://packagist.org/packages/graviton/vcap-config-loader) [![Total Downloads](https://poser.pugx.org/graviton/vcap-config-loader/downloads.svg)](https://packagist.org/packages/graviton/vcap-config-loader) [![Latest Unstable Version](https://poser.pugx.org/graviton/vcap-config-loader/v/unstable.svg)](https://packagist.org/packages/graviton/vcap-config-loader) [![License](https://poser.pugx.org/graviton/vcap-config-loader/license.svg)](https://packagist.org/packages/graviton/vcap-config-loader)
+
 Parses and loads the contents of a vcap services variable as provided by
 cloundfoundry clouds.
 
