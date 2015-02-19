@@ -14,7 +14,9 @@
     "autoload-dev": {
         "psr-4": { "Graviton\\Vcap\\": "test/" }
     },
-    "require": {},
+    "require": {
+        "peekmo/jsonpath": "~2.0-alpha"
+    },
     "require-dev": {
         "phpunit/phpunit": "*"
     }
