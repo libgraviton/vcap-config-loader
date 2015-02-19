@@ -44,7 +44,7 @@ class Loader
      */
     public function getByParam($type, $name, $path)
     {
-        $jsonPath = sprintf("\$['%s'][?(@.name=='%s')].%s", $type, $name, $path);
+        $jsonPath = sprintf("\$['%s'][?(@['name']=='%s')].%s", $type, $name, $path);
         return $this->get($jsonPath);
     }
 

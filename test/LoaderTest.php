@@ -39,7 +39,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
     public function getProvider()
     {
         return array(
-            'by type' => array(self::JSON_STRING_MARIADB, "\$['mariadb-'][?(@.name=='example')].name", 'example'),
+            'by type' => array(self::JSON_STRING_MARIADB, "\$['mariadb-'][?(@['name']=='example')].name", 'example'),
         );
     }
 
