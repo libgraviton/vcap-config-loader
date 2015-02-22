@@ -10,7 +10,7 @@ use Flow\JSONPath\JSONPath;
 class Loader
 {
     /**
-     * @var JsonStore
+     * @var JSONPath
      */
     private $input;
 
