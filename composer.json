@@ -15,7 +15,7 @@
         "psr-4": { "Graviton\\Vcap\\": "test/" }
     },
     "require": {
-        "peekmo/jsonpath": "~2.0-alpha"
+        "flow/jsonpath": "0.2.*"
     },
     "require-dev": {
         "phpunit/phpunit": "*",
