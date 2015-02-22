@@ -11,6 +11,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
 {
     // @codingStandardsIgnoreStart
     const JSON_STRING_MARIADB = '{"mariadb-": [ {"name": "example", "credentials": {"host": "127.0.0.1", "port": "3306", "username": "testuser", "password": "testpass", "database": "testbase"} } ]}';
+    const JSON_STRING_MARIADB_2 = '{"mariadb-9.8": [ {"name": "example", "credentials": {"host": "127.0.0.1", "port": "3306", "username": "testuser", "password": "testpass", "database": "testbase"} } ]}';
     // @codingStandardsIgnoreEmd
 
     /**
@@ -40,6 +41,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             'by type' => array(self::JSON_STRING_MARIADB, "\$['mariadb-'][?(@['name']=='example')].name", 'example'),
+            'version number in type' => array(self::JSON_STRING_MARIADB_2, "\$['mariadb-9.8'][?(@['name']=='example')].name", 'example'),
         );
     }
 
@@ -57,6 +59,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             'get host' => array(self::JSON_STRING_MARIADB, 'mariadb-', 'example', 'credentials.host', '127.0.0.1'),
+            'version number in type' => array(self::JSON_STRING_MARIADB_2, 'mariadb-9.8', 'example', 'credentials.host', '127.0.0.1'),
         );
     }
 

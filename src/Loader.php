@@ -5,12 +5,12 @@
 
 namespace Graviton\Vcap;
 
-use Peekmo\JsonPath\JsonStore;
+use Flow\JSONPath\JSONPath;
 
 class Loader
 {
     /**
-     * @var JsonStore
+     * @var JSONPath
      */
     private $input;
 
@@ -21,7 +21,7 @@ class Loader
      */
     public function setInput($input)
     {
-        $this->input = new JsonStore($input);
+        $this->input = new JSONPath(json_decode($input, true));
     }
 
     /**
@@ -31,8 +31,7 @@ class Loader
      */
     public function get($path)
     {
-        $data = $this->input->get($path);
-        return array_pop($data);
+        return $this->input->find($path)->first();
     }
 
     /**
