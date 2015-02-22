@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0
+
+* add ``Loader::getDb`` method
+
 ## 0.1.1
 
 * fix issue with parsing of types containg numbers like ``mongodb-2.2``

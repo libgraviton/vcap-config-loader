@@ -12,6 +12,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
     // @codingStandardsIgnoreStart
     const JSON_STRING_MARIADB = '{"mariadb-": [ {"name": "example", "credentials": {"host": "127.0.0.1", "port": "3306", "username": "testuser", "password": "testpass", "database": "testbase"} } ]}';
     const JSON_STRING_MARIADB_2 = '{"mariadb-9.8": [ {"name": "example", "credentials": {"host": "127.0.0.1", "port": "3306", "username": "testuser", "password": "testpass", "database": "testbase"} } ]}';
+    const JSON_STRING_MONGODB   = '{"mongodb-2.2": [ {"name": "example", "credentials": {"host": "127.0.0.1", "port": "4985", "db": "db"}, "tags": ["nosql", "mongodb"] } ]}';
     // @codingStandardsIgnoreEmd
 
     /**
@@ -75,5 +76,15 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('testuser', $sut->getUsername('mariadb-', 'example'));
         $this->assertEquals('testpass', $sut->getPassword('mariadb-', 'example'));
         $this->assertEquals('testbase', $sut->getDatabase('mariadb-', 'example'));
+        $sut->setInput(self::JSON_STRING_MARIADB_2);
+        $this->assertEquals('127.0.0.1', $sut->getHost('mariadb-9.8', 'example'));
+        $this->assertEquals('3306', $sut->getPort('mariadb-9.8', 'example'));
+        $this->assertEquals('testuser', $sut->getUsername('mariadb-9.8', 'example'));
+        $this->assertEquals('testpass', $sut->getPassword('mariadb-9.8', 'example'));
+        $this->assertEquals('testbase', $sut->getDatabase('mariadb-9.8', 'example'));
+        $sut->setInput(self::JSON_STRING_MONGODB);
+        $this->assertEquals('127.0.0.1', $sut->getHost('mongodb-2.2', 'example'));
+        $this->assertEquals('4985', $sut->getPort('mongodb-2.2', 'example'));
+        $this->assertEquals('db', $sut->getDb('mongodb-2.2', 'example'));
     }
 }
