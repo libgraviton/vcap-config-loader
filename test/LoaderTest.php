@@ -85,6 +85,6 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
         $sut->setInput(self::JSON_STRING_MONGODB);
         $this->assertEquals('127.0.0.1', $sut->getHost('mongodb-2.2', 'example'));
         $this->assertEquals('4985', $sut->getPort('mongodb-2.2', 'example'));
-        $this->assertEquals('db', $sut->getDatabase('mongodb-2.2', 'example'));
+        $this->assertEquals('db', $sut->getDb('mongodb-2.2', 'example'));
     }
 }

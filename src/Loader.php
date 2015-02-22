@@ -101,4 +101,15 @@ class Loader
     {
         return $this->getByParam($type, $name, 'credentials.database');
     }
+
+    /**
+     * @param string $type type of service
+     * @param string $name name of service
+     *
+     * @return string
+     */
+    public function getDb($type, $name)
+    {
+        return $this->getByParam($type, $name, 'credentials.db');
+    }
 }
