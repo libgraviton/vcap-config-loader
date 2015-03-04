@@ -5,9 +5,9 @@
 Parses and loads the contents of a vcap services variable as provided by
 cloundfoundry clouds.
 
-This is just a very small wrapper around peekmo/jsonpath. It is intended
-to make it very easy to configure services based on things cloudfoundry
-injects through the VCAP_SERVICES env variable.
+This is just a very small wrapper around flow/jsonpath. It is intended
+to make it easy to configure services based on things cloudfoundry injects
+through the VCAP_SERVICES env variable.
 
 This package adheres to [SemVer](http://semver.org/spec/v2.0.0.html) versioning.
 
@@ -39,6 +39,7 @@ $name = 'my-awesome-service';
 
 // data extraction
 $dbConfig = array(
+    'db' => $loader->getDb($type, $name),
     'host' => $loader->getHost($type, $name),
     'port' => $loader->getPort($type, $name),
     'database' => $loader->getDatabase($type, $name),
