@@ -65,26 +65,39 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider sugarMethodsProvider
+     *
+     * @param string $json
+     * @param string $type
+     * @param string $name
+     * @param string $method
+     * @param string $value
+     *
      * @return void
      */
-    public function testSugarMethods()
+    public function testSugarMethods($json, $type, $name, $method, $value)
     {
         $sut = new Loader;
-        $sut->setInput(self::JSON_STRING_MARIADB);
-        $this->assertEquals('127.0.0.1', $sut->getHost('mariadb-', 'example'));
-        $this->assertEquals('3306', $sut->getPort('mariadb-', 'example'));
-        $this->assertEquals('testuser', $sut->getUsername('mariadb-', 'example'));
-        $this->assertEquals('testpass', $sut->getPassword('mariadb-', 'example'));
-        $this->assertEquals('testbase', $sut->getDatabase('mariadb-', 'example'));
-        $sut->setInput(self::JSON_STRING_MARIADB_2);
-        $this->assertEquals('127.0.0.1', $sut->getHost('mariadb-9.8', 'example'));
-        $this->assertEquals('3306', $sut->getPort('mariadb-9.8', 'example'));
-        $this->assertEquals('testuser', $sut->getUsername('mariadb-9.8', 'example'));
-        $this->assertEquals('testpass', $sut->getPassword('mariadb-9.8', 'example'));
-        $this->assertEquals('testbase', $sut->getDatabase('mariadb-9.8', 'example'));
-        $sut->setInput(self::JSON_STRING_MONGODB);
-        $this->assertEquals('127.0.0.1', $sut->getHost('mongodb-2.2', 'example'));
-        $this->assertEquals('4985', $sut->getPort('mongodb-2.2', 'example'));
-        $this->assertEquals('db', $sut->getDb('mongodb-2.2', 'example'));
+        $sut->setInput($json);
+        $this->assertEquals($value, $sut->$method($type, $name));
+    }
+
+    public function sugarMethodsProvider()
+    {
+        return array(
+            array(self::JSON_STRING_MARIADB, 'mariadb-', 'example', 'getHost', '127.0.0.1'),
+            array(self::JSON_STRING_MARIADB, 'mariadb-', 'example', 'getPort', '3306'),
+            array(self::JSON_STRING_MARIADB, 'mariadb-', 'example', 'getUsername', 'testuser'),
+            array(self::JSON_STRING_MARIADB, 'mariadb-', 'example', 'getPassword', 'testpass'),
+            array(self::JSON_STRING_MARIADB, 'mariadb-', 'example', 'getDatabase', 'testbase'),
+            array(self::JSON_STRING_MARIADB_2, 'mariadb-9.8', 'example', 'getHost', '127.0.0.1'),
+            array(self::JSON_STRING_MARIADB_2, 'mariadb-9.8', 'example', 'getPort', '3306'),
+            array(self::JSON_STRING_MARIADB_2, 'mariadb-9.8', 'example', 'getUsername', 'testuser'),
+            array(self::JSON_STRING_MARIADB_2, 'mariadb-9.8', 'example', 'getPassword', 'testpass'),
+            array(self::JSON_STRING_MARIADB_2, 'mariadb-9.8', 'example', 'getDatabase', 'testbase'),
+            array(self::JSON_STRING_MONGODB, 'mongodb-2.2', 'example', 'getHost', '127.0.0.1'),
+            array(self::JSON_STRING_MONGODB, 'mongodb-2.2', 'example', 'getPort', '4985'),
+            array(self::JSON_STRING_MONGODB, 'mongodb-2.2', 'example', 'getDb', 'db'),
+        );
     }
 }
